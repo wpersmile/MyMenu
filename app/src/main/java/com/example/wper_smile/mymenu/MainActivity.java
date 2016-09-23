@@ -7,12 +7,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.ContextMenu;
+import android.view.MenuInflater;
 import android.view.SubMenu;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -31,6 +34,7 @@ public class MainActivity extends AppCompatActivity{
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         showListView();
+        Button btn=(Button)findViewById(R.id.popMenu);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -118,5 +122,22 @@ public class MainActivity extends AppCompatActivity{
         }
         return super.onContextItemSelected(item);
     }
-    
+    //弹出菜单
+    public void showPopupMenu(View v){
+        PopupMenu popupMenu=new PopupMenu(this,v);
+        popupMenu.getMenuInflater().inflate(R.menu.pop,popupMenu.getMenu());
+        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId())
+                {
+                    case R.id.change:
+                        Toast.makeText(MainActivity.this, "点击了修改", Toast.LENGTH_SHORT).show();
+                }
+                return false;
+            }
+        });
+        popupMenu.show();
+    }
+
 }
