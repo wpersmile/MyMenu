@@ -17,4 +17,11 @@
         android:layout_height="wrap_content"
         android:id="@+id/myListView"
         />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/myListView"
+        android:id="@+id/popMenu"
+        android:text="弹出菜单"
+        android:onClick="showPopupMenu"/>
 </RelativeLayout>
